@@ -11,8 +11,24 @@ function SpicyFoodList() {
     setFoods([...foods, newFood]);
   }
 
+  // to delete food from list
+  // function handleClick(event) {
+  //   setFoods(foods.filter((food) => food.id !== event));
+  // }
+
+  // to increase heat level
   function handleClick(event) {
-    setFoods(foods.filter((food) => food.id !== event));
+    // console.log(event);
+    setFoods(
+      foods.map((food) => {
+        if (food.id === event) {
+          return {
+            ...food,
+            heatLevel: food.heatLevel + 1,
+          };
+        } else return food;
+      })
+    );
   }
 
   const foodList = foods.map((food) => (
